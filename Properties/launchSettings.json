@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BouquetShop": {
+      "commandName": "Project",
+      "jsWebView2Debugging": false
+    }
+  }
+}
