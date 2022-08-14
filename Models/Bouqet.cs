@@ -9,6 +9,5 @@
 
         public int? SalesmanId { get; set; }
         public Salesman Salesman { get; set; }
-        public ICollection<Buyer> Buyers { get; set; }
     }
 }

@@ -70,5 +70,34 @@ namespace BouquetShop.GraphQL
             await context.SaveChangesAsync();
             return new AddBuyerPayload(buyer);
         }
+
+        public async Task<BouquetInCartPayload> AddBouqetToCartAsync(
+            BouqetInCartInput input,
+            [Service] ShopContext context)
+        {
+            var bouqet = context.bouqets.Where<Bouqet>(b => b.Id == input.BouqetId).FirstOrDefault();
+            var buyer = context.buyers.Where<Buyer>(b => b.Id == input.BuyerId).FirstOrDefault();
+            if(bouqet != null && buyer != null)
+            {
+                buyer.Cart.Add(bouqet);
+            }
+
+            return new BouquetInCartPayload(buyer.Cart);
+        }
+
+        public async Task<BouquetInCartPayload> RemoveBouqetFromCartAsync(
+            BouqetInCartInput input,
+            [Service] ShopContext context)
+        {
+            var buyer = context.buyers.Where<Buyer>(b => b.Id == input.BuyerId).FirstOrDefault();
+            var bouqet = buyer.Cart.Where<Bouqet>(b => b.Id == input.BouqetId).FirstOrDefault();
+
+            if (bouqet != null && buyer != null)
+            {
+                buyer.Cart.Remove(bouqet);
+            }
+
+            return new BouquetInCartPayload(buyer.Cart);
+        }
     }
 }

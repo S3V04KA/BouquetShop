@@ -31,4 +31,14 @@ namespace BouquetShop.GraphQL
 
         public Bouqet Bouqet { get; set; }
     }
+
+    public class BouquetInCartPayload
+    {
+        public BouquetInCartPayload(ICollection<Bouqet> cart)
+        {
+            Cart = cart;
+        }
+
+        public ICollection<Bouqet> Cart { get; set; }
+    }
 }

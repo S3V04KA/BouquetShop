@@ -19,10 +19,6 @@ namespace BouquetShop.Database
             modelBuilder.Entity<Bouqet>().
                 HasOne(b => b.Salesman).
                 WithMany(s => s.Products);
-
-            modelBuilder.Entity<Buyer>().
-                HasMany(b => b.Cart).
-                WithMany(bq => bq.Buyers);
         }
     }
 }

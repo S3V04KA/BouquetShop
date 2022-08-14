@@ -24,4 +24,9 @@
         int Count,
         int SalemanId
         );
+
+    public record BouqetInCartInput(
+        int BouqetId,
+        int BuyerId
+        );
 }

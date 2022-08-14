@@ -8,7 +8,7 @@ namespace BouquetShop.GraphQL
     {
         public IQueryable<Bouqet> GetBouqets([Service] ShopContext context)
         {
-            return context.bouqets.Include(b => b.Salesman).Include(b => b.Buyers).AsQueryable<Bouqet>();
+            return context.bouqets.Include(b => b.Salesman).AsQueryable<Bouqet>();
         }
 
         public IQueryable<Salesman> GetSalesmans([Service] ShopContext context)
